@@ -15,6 +15,7 @@ export default class {
 
     onEvent() {
         this.Mqtt.on('message', (topic, payload, packet) => {
+            Emitter.emit(topic, payload);
             var exp = topic.split('/');
             if (exp[3]) {
                 Emitter.emit(exp[3], payload);

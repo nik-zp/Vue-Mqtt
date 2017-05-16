@@ -1,7 +1,8 @@
 {
   "name": "vue-mqtt",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "mqtt implemantation for vuejs",
+  "homepage": "https://github.com/nik-zp/vue-mqtt",
   "main": "dist/build.js",
   "scripts": {
     "build": "webpack --progress --hide-modules"
@@ -14,6 +15,10 @@
     "websocket",
     "realtime"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nik-zp/vue-mqtt.git"
+  },
   "author": "Nikolai Paschenko",
   "license": "MIT",
   "dependencies": {

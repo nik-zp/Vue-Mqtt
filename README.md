@@ -22,9 +22,14 @@ The 4th parameter for reading is used
 ``` js
 var vm = new Vue({
   mqtt:{
+    // for 4th parameter of topic
     test: function(val){
       console.log('this method ...')
-    }
+    },
+    // for full topic
+    'param/param/param/test': function(val){
+      console.log('this method ...')
+    },
   },
   methods: {
     clickSub: function(val){
