@@ -1,0 +1,28 @@
+{
+  "name": "vue-mqtt",
+  "version": "0.0.2",
+  "description": "mqtt implemantation for vuejs",
+  "main": "dist/build.js",
+  "scripts": {
+    "build": "webpack --progress --hide-modules"
+  },
+  "keywords": [
+    "vuejs",
+    "socket",
+    "vue",
+    "mqtt",
+    "websocket",
+    "realtime"
+  ],
+  "author": "Nikolai Paschenko",
+  "license": "MIT",
+  "dependencies": {
+    "mqtt": "^2.7.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.3.13",
+    "webpack": "^2.2.0-rc.3"
+  }
+}
