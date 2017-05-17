@@ -12,7 +12,7 @@ npm install vue-mqtt --save
 #### Configuration
 ``` js
 import VueMqtt from 'vue-mqtt';
-Vue.use(VueMqtt, 'ws://example.com:1883');
+Vue.use(VueMqtt, 'ws://iot.eclipse.org/ws');
 ```
 
 #### On Vuejs instance usage
