@@ -1,6 +1,6 @@
 # Vue-Mqtt
 
-mqtt implementation for Vuejs 2
+Connect to mqtt through websocket, implementation for Vuejs 2
 
 ## Install
 
