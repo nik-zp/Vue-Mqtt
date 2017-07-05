@@ -10,10 +10,6 @@ export default class {
             this.Mqtt = connection
         }
 
-        this.onEvent()
-    }
-
-    onEvent() {
         this.Mqtt.on('message', (topic, payload, packet) => {
             Emitter.emit(topic, payload);
             let last = topic.split('/').pop();
