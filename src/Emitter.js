@@ -4,14 +4,14 @@ export default new class {
     }
 
     addListener(label, callback, vm) {
-        if(typeof callback == 'function'){
+        if (typeof callback === 'function') {
             this.listeners.has(label) || this.listeners.set(label, []);
             this.listeners.get(label).push({callback: callback, vm: vm});
 
-            return true
+            return true;
         }
 
-        return false
+        return false;
     }
 
     removeListener(label, callback, vm) {
@@ -20,7 +20,7 @@ export default new class {
 
         if (listeners && listeners.length) {
             index = listeners.reduce((i, listener, index) => {
-                return (typeof listener.callback == 'function' && listener.callback === callback && listener.vm == vm) ?
+                return (typeof listener.callback === 'function' && listener.callback === callback && listener.vm === vm) ?
                     i = index :
                     i;
             }, -1);
@@ -39,7 +39,7 @@ export default new class {
 
         if (listeners && listeners.length) {
             listeners.forEach((listener) => {
-                listener.callback.call(listener.vm,...args)
+                listener.callback.call(listener.vm, ...args);
             });
             return true;
         }

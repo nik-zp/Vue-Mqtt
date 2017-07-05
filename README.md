@@ -12,30 +12,37 @@ npm install vue-mqtt --save
 #### Configuration
 ``` js
 import VueMqtt from 'vue-mqtt';
-Vue.use(VueMqtt, 'ws://iot.eclipse.org/ws');
+Vue.use(VueMqtt, 'ws://iot.eclipse.org/ws', options);
 ```
+options: https://github.com/mqttjs/MQTT.js#client
+
+####Subscribe
+```
+this.$mqtt.subscribe('param/param/param/test', options)
+```
+options: https://github.com/mqttjs/MQTT.js#subscribe
 
 #### On Vuejs instance usage
 
-The 4th parameter for reading is used
+The last parameter for reading is used
 
 ``` js
 var vm = new Vue({
-  mqtt:{
-    // for 4th parameter of topic
-    test: function(val){
+  mqtt: {
+    // for last parameter of topic
+    test: function(val) {
       console.log('this method ...')
     },
     // for full topic
-    'param/param/param/test': function(val){
+    'param/param/param/test': function(val) {
       console.log('this method ...')
     },
   },
   methods: {
-    clickSub: function(val){
+    clickSub: function(val) {
         this.$mqtt.subscribe('param/param/param/test')
     },
-    clickPub: function(val){
+    clickPub: function(val) {
         this.$mqtt.publish('param/param/param/test', 'message')
     }
   }

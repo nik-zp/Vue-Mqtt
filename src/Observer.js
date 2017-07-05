@@ -3,9 +3,9 @@ import Mqtt from 'mqtt'
 
 export default class {
 
-    constructor(connection, store) {
-        if (typeof connection == 'string') {
-            this.Mqtt = Mqtt.connect(connection);
+    constructor(connection, options) {
+        if (typeof connection === 'string') {
+            this.Mqtt = Mqtt.connect(connection, options);
         } else {
             this.Mqtt = connection
         }
@@ -16,9 +16,9 @@ export default class {
     onEvent() {
         this.Mqtt.on('message', (topic, payload, packet) => {
             Emitter.emit(topic, payload);
-            var exp = topic.split('/');
-            if (exp[3]) {
-                Emitter.emit(exp[3], payload);
+            let last = topic.split('/').pop();
+            if (last) {
+                Emitter.emit(last, payload);
             }
         });
     }

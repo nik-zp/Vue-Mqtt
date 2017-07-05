@@ -3,30 +3,30 @@ import Emitter from './Emitter'
 
 export default {
 
-    install(Vue, connection, store){
+    install(Vue, connection, options) {
 
-        if(!connection) throw new Error("[Vue-Mqtt] cannot locate connection")
+        if (!connection) throw new Error("[Vue-Mqtt] cannot locate connection");
 
-        let observer = new Observer(connection, store)
+        let observer = new Observer(connection, options);
 
         Vue.prototype.$mqtt = observer.Mqtt;
 
         Vue.mixin({
             created() {
-                let mqtt = this.$options['mqtt']
+                let mqtt = this.$options['mqtt'];
 
                 this.$options.mqtt = new Proxy({}, {
                     set: (target, key, value) => {
-                        Emitter.addListener(key, value, this)
-                        target[key] = value
+                        Emitter.addListener(key, value, this);
+                        target[key] = value;
                         return true;
                     },
                     deleteProperty: (target, key) => {
-                        Emitter.removeListener(key, this.$options.mqtt[key], this)
+                        Emitter.removeListener(key, this.$options.mqtt[key], this);
                         delete target.key;
-                        return true
+                        return true;
                     }
-                })
+                });
 
                 if (mqtt) {
                     Object.keys(mqtt).forEach((key) => {
@@ -34,12 +34,12 @@ export default {
                     });
                 }
             },
-            beforeDestroy(){
-                let mqtt = this.$options['mqtt']
+            beforeDestroy() {
+                let mqtt = this.$options['mqtt'];
 
-                if(mqtt){
+                if (mqtt) {
                     Object.keys(mqtt).forEach((key) => {
-                        delete this.$options.mqtt[key]
+                        delete this.$options.mqtt[key];
                     });
                 }
             }
@@ -48,5 +48,3 @@ export default {
     }
 
 }
-
-
