@@ -13,6 +13,9 @@ export default {
 
         Vue.mixin({
             created() {
+                this.loadMqttListeners();
+            },
+            loadMqttListeners() {
                 let mqtt = this.$options['mqtt'];
 
                 this.$options.mqtt = new Proxy({}, {
