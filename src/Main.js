@@ -3,7 +3,13 @@ import Emitter from './Emitter'
 
 export default {
 
-    install(Vue) {
+    install(Vue, connection, options) {
+
+        if (!connection) throw new Error("[Vue-Mqtt] cannot locate connection");
+
+        let observer = new Observer(connection, options);
+
+        Vue.prototype.$mqtt = observer.Mqtt;
 
         Vue.mixin({
             created() {
@@ -38,16 +44,6 @@ export default {
                 }
             }
         })
-
-    },
-
-    connect(Vue, connection, options) {
-
-        if (!connection) throw new Error("[Vue-Mqtt] cannot locate connection");
-
-        let observer = new Observer(connection, options);
-
-        Vue.prototype.$mqtt = observer.Mqtt;
 
     }
 

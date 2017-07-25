@@ -35,15 +35,39 @@ export default new class {
     }
 
     emit(label, ...args) {
-        let listeners = this.listeners.get(label);
+        let ret = false;
+        this.listeners.forEach((listeners, key) => {
+            if (this.eq(label, key) && listeners && listeners.length) {
+                listeners.forEach((listener) => {
+                    listener.callback.call(listener.vm, ...args);
+                });
+                ret = true;
+            }
+        });
+        return ret;
+    }
 
-        if (listeners && listeners.length) {
-            listeners.forEach((listener) => {
-                listener.callback.call(listener.vm, ...args);
-            });
-            return true;
+    eq(str1, str2) {
+        let arr1 = str1.split('/');
+        let arr2 = str2.split('/');
+        if (!str1.includes('#') && !str2.includes('#') && arr1.length !== arr2.length) {
+            return false;
         }
-        return false;
+        if (arr2.length < arr1.length) {
+            arr2 = str1.split('/');
+            arr1 = str2.split('/');
+        }
+        let ret = true;
+        arr1.forEach((val, i) => {
+            if (val === '+' || val === '#'
+                || (arr2[i] && arr2[i] === '+')
+                || (arr2[i] && arr2[i] === '#')
+                || (arr2[i] && arr2[i] === val)) {
+                return;
+            }
+            ret = false;
+        })
+        return ret;
     }
 
 }

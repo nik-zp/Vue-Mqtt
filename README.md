@@ -2,6 +2,10 @@
 
 Connect to mqtt through websocket, implementation for Vuejs 2
 
+## Example
+
+Example [Vue-Mqtt-Example](https://github.com/nik-zp/Vue-Mqtt-Example)
+
 ## Install
 
 ``` bash
@@ -16,7 +20,7 @@ Vue.use(VueMqtt, 'ws://iot.eclipse.org/ws', options);
 ```
 options: https://github.com/mqttjs/MQTT.js#client
 
-####Subscribe
+#### Subscribe
 ```
 this.$mqtt.subscribe('param/param/param/test', options)
 ```
@@ -29,13 +33,14 @@ The last parameter for reading is used
 ``` js
 var vm = new Vue({
   mqtt: {
-    // for last parameter of topic
-    test: function(val) {
-      console.log('this method ...')
+    'param/+/+/test': function(val) {
+      console.log('param/+/+/test')
     },
-    // for full topic
+    'param/#': function(val) {
+      console.log('param/#')
+    },
     'param/param/param/test': function(val) {
-      console.log('this method ...')
+      console.log('param/param/param/test')
     },
   },
   methods: {
