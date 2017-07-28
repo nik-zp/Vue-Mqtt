@@ -39,7 +39,7 @@ export default new class {
         this.listeners.forEach((listeners, key) => {
             if (this.eq(label, key) && listeners && listeners.length) {
                 listeners.forEach((listener) => {
-                    listener.callback.call(listener.vm, ...args);
+                    listener.callback.call(listener.vm, ...args, label);
                 });
                 ret = true;
             }

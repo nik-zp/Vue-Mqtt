@@ -12,10 +12,6 @@ export default class {
 
         this.Mqtt.on('message', (topic, payload, packet) => {
             Emitter.emit(topic, payload);
-            // let last = topic.split('/').pop();
-            // if (last) {
-                // Emitter.emit(last, payload);
-            // }
         });
     }
 
