@@ -42,6 +42,16 @@ var vm = new Vue({
     'param/param/param/test': function(val) {
       console.log('param/param/param/test')
     },
+    'template/+' (data, topic) {
+      if (topic.split('/').pop() === '12345') {
+        console.log('topic:', 'template/12345')
+      }
+    },
+    'template/+/param/param' (data, topic) {
+      if (topic.split('/')[1] === '12345') {
+        console.log('topic:', 'template/12345/param/param')
+      }
+    }
   },
   methods: {
     clickSub: function(val) {
