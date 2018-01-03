@@ -1,6 +1,6 @@
 {
   "name": "vue-mqtt",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Connect to mqtt through websocket, implementation for Vuejs 2",
   "homepage": "https://github.com/nik-zp/vue-mqtt",
   "main": "dist/build.js",
