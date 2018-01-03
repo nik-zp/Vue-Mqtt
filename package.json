@@ -22,12 +22,12 @@
   "author": "Nikolai Paschenko",
   "license": "MIT",
   "dependencies": {
-    "mqtt": "^2.9.0"
+    "mqtt": "^2.15.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.11.4",
+    "babel-cli": "^6.26.0",
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.3.13",
-    "webpack": "^2.2.0-rc.3"
+    "webpack": "^2.7.0"
   }
 }
