@@ -22,7 +22,7 @@
   "author": "Nikolai Paschenko",
   "license": "MIT",
   "dependencies": {
-    "mqtt": "^2.18.3"
+    "mqtt": "^2.18.8"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
