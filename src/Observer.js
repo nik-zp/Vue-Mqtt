@@ -11,7 +11,7 @@ export default class {
         }
 
         this.Mqtt.on('message', (topic, payload, packet) => {
-            Emitter.emit(topic, payload);
+            Emitter.emit(topic, payload, packet);
         });
     }
 
